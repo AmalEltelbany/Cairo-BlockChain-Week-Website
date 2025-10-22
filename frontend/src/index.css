@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* Animated gradient for headings */
+@keyframes cbw-gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* helper classes */
+.bg-cbw {
+  background-image: linear-gradient(90deg, #00F5D4, #7C3AED, #FF00D4);
+  background-size: 200% 200%;
+}
+.animate-cbw-gradient {
+  animation: cbw-gradient 8s linear infinite;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cbw-gradient { animation: none !important; }
+}

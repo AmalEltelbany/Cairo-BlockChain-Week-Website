@@ -1,0 +1,77 @@
+type UserProfile = record {name: text;};
+type Time = int;
+type StreamingStrategy = variant {
+                           Callback:
+                            record {
+                              callback:
+                               func (StreamingCallbackToken) ->
+                                (StreamingCallbackHttpResponse);
+                              token: StreamingCallbackToken;
+                            };};
+type StreamingCallbackToken = 
+ record {
+   content_encoding: text;
+   index: nat;
+   key: text;
+ };
+type StreamingCallbackHttpResponse = 
+ record {
+   body: blob;
+   token: opt StreamingCallbackToken;
+ };
+type HttpResponse = 
+ record {
+   body: blob;
+   headers: vec HeaderField;
+   status_code: nat16;
+   streaming_strategy: opt StreamingStrategy;
+   upgrade: bool;
+ };
+type HttpRequest = 
+ record {
+   body: blob;
+   certificate_version: opt nat16;
+   headers: vec HeaderField;
+   method: text;
+   url: text;
+ };
+type HeaderField = 
+ record {
+   text;
+   text;
+ };
+type File = 
+ record {
+   content: blob;
+   mimeType: text;
+   uploadedAt: Time;
+ };
+type Data = 
+ record {
+   content: text;
+   id: nat;
+   metadata: text;
+ };
+service : {
+  createData: (content: text, metadata: text) -> (nat);
+  deleteData: (id: nat) -> ();
+  deleteFile: (path: text) -> ();
+  fileDelete: (path: text) -> ();
+  fileList: () -> (vec record {
+                         text;
+                         File;
+                       }) query;
+  fileUpload: (path: text, mimeType: text, content: blob) -> ();
+  getAdminPrincipal: () -> (opt principal) query;
+  getAllData: () -> (vec Data) query;
+  getData: (id: nat) -> (opt Data) query;
+  getUserProfile: () -> (opt UserProfile) query;
+  httpStreamingCallback: (_t: StreamingCallbackToken) ->
+   (StreamingCallbackHttpResponse) query;
+  http_request: (req: HttpRequest) -> (HttpResponse) query;
+  initializeAuth: () -> ();
+  isCurrentUserAdmin: () -> (bool) query;
+  saveUserProfile: (profile: UserProfile) -> ();
+  transferAdmin: (newAdmin: principal) -> ();
+  updateData: (id: nat, content: text, metadata: text) -> ();
+}

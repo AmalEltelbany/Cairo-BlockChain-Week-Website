@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "declarations/*": ["../src/declarations/*"]
+    },
+    "jsx": "react-jsx",              
+    "types": ["vite/client"]
+  },
+  "include": [
+    "src",
+    "../src/declarations/**/*.d.ts"
+  ]
+}
