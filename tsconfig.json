@@ -18,5 +18,5 @@
   "include": [
     "src",
     "../src/declarations/**/*.d.ts"
-  ]
+, "frontend/src/components/components", "frontend/src/components/MetallicPaint.jsx", "frontend/src/components/GooeyNav.jsx"  ]
 }
