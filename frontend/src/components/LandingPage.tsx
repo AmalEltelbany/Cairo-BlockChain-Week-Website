@@ -254,10 +254,7 @@ const sponsors = [
 
             <div className="flex flex-wrap justify-center items-center gap-6 text-slate-300 animate-fade-in-up opacity-0"
                  style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-              <div className="flex items-center gap-2 hover-glow transition-all">
-                <Calendar className="w-5 h-5 text-[#00E3D8]" />
-                <span>March 15–17, 2025</span>
-              </div>
+       
               <div className="flex items-center gap-2 hover-glow transition-all">
                 <MapPin className="w-5 h-5 text-[#C400FF]" />
                 <span>Cairo, Egypt</span>
@@ -268,33 +265,62 @@ const sponsors = [
           <ScrollIndicator />
         </section>
 
-        {/* HIGHLIGHTS */}
-        <section id="section-highlights" className="relative py-24 px-4 bg-[#0B0B0B]/90 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto">
-            <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-[#00E3D8] to-[#C400FF] bg-clip-text text-transparent transition-all duration-1000 ${isVisible['section-highlights'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Why Attend Cairo Blockchain Week?
-            </h2>
-            <div className="grid md:grid-cols-3 gap-10">
-              {highlights.map((item, index) => (
-                <div
-                  key={index}
-                  className={`group p-8 rounded-2xl bg-gradient-to-br from-[#101010]/70 to-[#1a1a1a]/50 border border-slate-800 hover:border-[#00E3D8] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,227,216,0.4)] backdrop-blur-md hover:-translate-y-2 ${isVisible['section-highlights'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                  style={{ transitionDelay: `${index * 0.2}s` }}
-                >
-                  <div className="mb-6 flex justify-center transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-center mb-4 text-white group-hover:text-[#00E3D8] transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-400 text-center leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+       {/* HIGHLIGHTS (GLASS + NEON + GLITCH) */}
+<section
+  id="section-highlights"
+  className="relative py-28 px-4 backdrop-blur-md bg-transparent"
+>
+  <div className="max-w-7xl mx-auto">
+    <h2
+      className={`text-4xl md:text-5xl font-bold text-center mb-20 text-white transition-all duration-1000 flex flex-wrap justify-center gap-3 ${
+        isVisible['section-highlights']
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-10'
+      }`}
+    >
+      Why Attend{" "}
+      <span className="relative inline-block">
+        <span className="glitch-text bg-cbw bg-clip-text text-transparent animate-cbw-gradient">
+          Blockchain
+        </span>
+      </span>
+      Week?
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-10">
+      {highlights.map((item, index) => (
+        <div
+          key={index}
+          style={{ transitionDelay: `${index * 0.2}s` }}
+          className={`group p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl
+          hover:border-[#00E3D8] transition-all duration-500
+          hover:shadow-[0_0_50px_rgba(0,227,216,0.45)]
+          hover:-translate-y-3 hover:-rotate-1
+          ${
+            isVisible['section-highlights']
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="mb-6 flex justify-center animate-pulse-slow group-hover:scale-125 transition-all duration-500">
+            <div className="drop-shadow-[0_0_25px_#00E3D8] group-hover:drop-shadow-[0_0_45px_#C400FF] transition-all duration-700">
+              {item.icon}
             </div>
           </div>
-        </section>
+
+          <h3 className="text-2xl font-bold text-center mb-4 text-white group-hover:text-[#00E3D8] transition-colors">
+            {item.title}
+          </h3>
+
+          <p className="text-slate-300 text-center leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
         {/* SPEAKERS */}
         <section id="section-speakers" className="relative py-24 px-4 bg-[#0A0A0A]">
@@ -330,7 +356,6 @@ const sponsors = [
           </div>
         </section>
 
-        {/* SPONSORS */}
        {/* SPONSORS */}
 <section id="section-sponsors" className="relative py-24 px-4 bg-[#0B0B0B]/95">
   <div className="max-w-6xl mx-auto text-center">
@@ -356,37 +381,25 @@ const sponsors = [
   </div>
 </section>
 
+     {/* CALL TO ACTION */}
+{/* CALL TO ACTION */}
+<section className="relative py-28 px-6 text-center text-white">
+   <GlitchText 
+      speed={1.1}
+      enableShadows={true}
+      className="text-4xl md:text-6xl font-extrabold mb-6 text-white"
+    >
+      Be Part of the Future
+    </GlitchText>
 
-        {/* CALL TO ACTION */}
-        <section className="relative py-32 px-6 bg-gradient-to-r from-[#00E3D8] via-[#C400FF] to-[#3C6EFF] overflow-hidden">
-          {/* Animated background effect */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(10)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-white rounded-full opacity-20"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animation: `float ${4 + Math.random() * 3}s ease-in-out infinite`,
-                  animationDelay: `${Math.random() * 2}s`,
-                }}
-              ></div>
-            ))}
-          </div>
+  <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+    Cairo Blockchain Week brings together innovators shaping tomorrow.  
+    Whether you're a builder, founder, researcher, or curious mind —  
+    this is where the global Web3 community meets.
+  </p>
+</section>
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in-up">
-              Ready to Shape the Future of Blockchain?
-            </h2>
-            <p className="text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Join industry leaders, innovators, and visionaries at Cairo Blockchain Week. Secure your spot and be part of the revolution.
-            </p>
-            <button className="group px-12 py-5 bg-white text-[#0A0A0A] font-bold rounded-xl hover:shadow-[0_0_50px_rgba(255,255,255,0.8)] hover:scale-110 transition-all duration-300 text-lg animate-scale-in" style={{ animationDelay: '0.4s' }}>
-              <span className="group-hover:tracking-wider transition-all duration-300">Register Now</span>
-            </button>
-          </div>
-        </section>
+
       </div>
 
       {/* SPEAKER MODAL */}
