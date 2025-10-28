@@ -6,6 +6,7 @@ import Galaxy from "./Galaxy";
 
 // Enhanced GlitchText Component with proper imports
 import GlitchText from './GlitchText';
+import LogoLoop from './LogoLoop';
 
 const ScrollIndicator = () => (
   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -126,12 +127,21 @@ const LandingPage = () => {
       photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
     },
   ];
+const sponsors = [
+  { id: 1, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/200px-Bitcoin.svg.png", name: "Bitcoin" },
+  { id: 2, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/200px-Ethereum_logo_2014.svg.png", name: "Ethereum" },
+  { id: 3, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Binance_Logo.svg/200px-Binance_Logo.svg.png", name: "Binance" },
 
-  const sponsors = [
-    { id: 1, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/44/Binance_Logo.svg", name: "Binance" },
-    { id: 2, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/57/Ethereum_logo_2014.svg", name: "Ethereum" },
-    { id: 3, logoUrl: "https://upload.wikimedia.org/wikipedia/commons/0/01/Solana_logo.svg", name: "Solana" },
-  ];
+  { id: 4, logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Solana_logo.png/200px-Solana_logo.png", name: "Solana" }
+];
+
+
+  const logoItems = sponsors.map(sponsor => ({
+    src: sponsor.logoUrl,
+    alt: sponsor.name,
+    
+    height: 48,
+  }));
 
   return (
     <div className="relative min-h-screen bg-[#0A0A0A] text-white overflow-hidden">
@@ -321,24 +331,31 @@ const LandingPage = () => {
         </section>
 
         {/* SPONSORS */}
-        <section id="section-sponsors" className="relative py-24 px-4 bg-[#0B0B0B]/95">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-[#3C6EFF] to-[#00E3D8] bg-clip-text text-transparent transition-all duration-1000 ${isVisible['section-sponsors'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Our Sponsors
-            </h2>
-            <div className="flex flex-wrap justify-center items-center gap-16">
-              {sponsors.map((s, index) => (
-                <img
-                  key={s.id}
-                  src={s.logoUrl}
-                  alt={s.name}
-                  className={`h-16 opacity-60 hover:opacity-100 hover:scale-125 transition-all duration-500 filter brightness-200 hover:drop-shadow-[0_0_15px_rgba(0,227,216,0.8)] ${isVisible['section-sponsors'] ? 'opacity-60 scale-100' : 'opacity-0 scale-75'}`}
-                  style={{ transitionDelay: `${index * 0.2}s` }}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+       {/* SPONSORS */}
+<section id="section-sponsors" className="relative py-24 px-4 bg-[#0B0B0B]/95">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className={`text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-[#3C6EFF] to-[#00E3D8] bg-clip-text text-transparent transition-all duration-1000 ${isVisible['section-sponsors'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      Our Sponsors
+    </h2>
+
+    <div className={`transition-all duration-1000 ${isVisible['section-sponsors'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <LogoLoop
+        logos={logoItems}
+        speed={80}
+        direction="left"
+        logoHeight={48}
+        gap={64}
+        pauseOnHover={true}
+        fadeOut={true}
+        fadeOutColor="#0B0B0B"
+        scaleOnHover={true}
+        ariaLabel="Our blockchain sponsors"
+        className="[&_img]:brightness-200 hover:[&_img]:brightness-150 transition-all"
+      />
+    </div>
+  </div>
+</section>
+
 
         {/* CALL TO ACTION */}
         <section className="relative py-32 px-6 bg-gradient-to-r from-[#00E3D8] via-[#C400FF] to-[#3C6EFF] overflow-hidden">

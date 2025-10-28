@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Mic, Sparkles } from "lucide-react";
+import Galaxy from "./Galaxy";
 
 const CONTACT_EMAIL = "Cairoblockchainweek@mercaturaforum.com";
 
@@ -45,12 +46,18 @@ ${formData.name}`;
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 font-oswald overflow-hidden">
-      {/* Hieroglyphic background */}
-      <div className="absolute inset-0 bg-[url('/textures/hieroglyph-pattern.png')] opacity-[0.04] pointer-events-none" />
-
-      {/* Gradient accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#00E3D8]/10 via-[#C400FF]/10 to-[#3C6EFF]/10 blur-3xl" />
+    <div className="relative min-h-screen bg-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Galaxy Background */}
+      <div className="fixed inset-0 z-0">
+        <Galaxy
+          mouseRepulsion={true}
+          mouseInteraction={true}
+          density={1.3}
+          glowIntensity={0.5}
+          saturation={0.9}
+          hueShift={220}
+        />
+      </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
         {/* Header */}
